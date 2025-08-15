@@ -7,6 +7,8 @@ redirect_from:
   - /about.html
 ---
 
+
+![Illustration of combining vision and language modalities](/images/for_about.png){: .align-right width="300px"}
 🧑‍💼 I focus on strong leadership, effective team management, and fostering a collaborative work environment.
 
 🚀 I have developed and deployed multiple AI-powered services.
