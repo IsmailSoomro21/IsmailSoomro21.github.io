@@ -8,9 +8,7 @@ redirect_from:
 ---
 
 
-![Illustration of combining vision and language modalities](/images/about1.png){: .align-right width="300px"}
-![Illustration of combining vision and language modalities](/images/about2.png){: .align-right width="300px"}
-
+![Illustration of combining vision and language modalities](/images/about1.png){: .align-right width="400px" height="500px"}
 
 🧑‍💼 I focus on strong leadership, effective team management, and fostering a collaborative work environment.
 
