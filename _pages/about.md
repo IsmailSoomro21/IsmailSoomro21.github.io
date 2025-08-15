@@ -8,7 +8,10 @@ redirect_from:
 ---
 
 
-![Illustration of combining vision and language modalities](/images/for_about.png){: .align-right width="300px"}
+![Illustration of combining vision and language modalities](/images/about1.png){: .align-right width="300px"}
+![Illustration of combining vision and language modalities](/images/about2.png){: .align-right width="300px"}
+
+
 🧑‍💼 I focus on strong leadership, effective team management, and fostering a collaborative work environment.
 
 🚀 I have developed and deployed multiple AI-powered services.
@@ -20,6 +23,7 @@ redirect_from:
 🤝 I've Assisted and mentored others in machine learning and AI projects.
 
 🌐 I am Passionate about building scalable, real-world AI solutions
+
 
 
 # From Concepts to Deployed AI
@@ -39,6 +43,7 @@ I love putting theory into practice. By building hands-on projects and experimen
 
 ## Turning Data into Intelligence
 Data is at the heart of AI. I specialize in extracting meaningful insights from data, applying machine learning models, and deploying intelligent systems that help businesses and users make smarter decisions.
+
 
 
 # Selected Experience
