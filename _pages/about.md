@@ -14,6 +14,8 @@ redirect_from:
 
 🚀 I have developed and deployed multiple AI-powered services.
 
+<br><br>
+
 📜 I am actively pursuing AWS Data Engineering and Machine Learning Associate (DEA/MLA) certification.
 
 🔬 I am passionate about exploring AI research and keeping up with the latest developments
