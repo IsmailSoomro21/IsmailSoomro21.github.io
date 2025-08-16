@@ -2,6 +2,468 @@
 title: "Portfolio item number 2"
 excerpt: "Short description of portfolio item number 2 <br/><img src='/images/500x300.png'>"
 collection: portfolio
+redirect_to: /portfolio-2.html
 ---
 
-This is an item in your portfolio. It can be have images or nice text. If you name the file .md, it will be parsed as markdown. If you name the file .html, it will be parsed as HTML. 
+import React from "react";
+import { motion } from "framer-motion";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import {
+  Github,
+  Link as LinkIcon,
+  Mail,
+  Server,
+  ShieldCheck,
+  Zap,
+  Database,
+  Cpu,
+  Camera,
+  Code2,
+  Rocket,
+  Sparkles,
+  Award,
+  BarChart3,
+  PlayCircle,
+  BookOpen,
+  Workflow,
+} from "lucide-react";
+
+// Small helper components
+const Section = ({ id, title, subtitle, children }) => (
+  <section id={id} className="py-16 sm:py-24">
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      {title && (
+        <div className="mb-10 flex items-end justify-between gap-4">
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">{title}</h2>
+            {subtitle && (
+              <p className="mt-2 text-muted-foreground max-w-2xl">{subtitle}</p>
+            )}
+          </div>
+        </div>
+      )}
+      {children}
+    </div>
+  </section>
+);
+
+const Stat = ({ value, label }) => (
+  <div className="text-center">
+    <div className="text-3xl sm:text-4xl font-extrabold tracking-tight">{value}</div>
+    <div className="text-sm text-muted-foreground mt-1">{label}</div>
+  </div>
+);
+
+const Pill = ({ children }) => (
+  <Badge className="rounded-full px-3 py-1 text-xs sm:text-sm font-medium">{children}</Badge>
+);
+
+export default function FaceMatchPortfolio() {
+  const tech = [
+    "Python 3",
+    "OpenCV (cv2)",
+    "Haar Cascades",
+    "PyWavelets (pywt)",
+    "Pandas / NumPy",
+    "Matplotlib",
+    "FastAPI",
+    "MySQL",
+    "Uvicorn",
+    "Docker",
+  ];
+
+  const features = [
+    {
+      icon: <Camera className="w-5 h-5" />,
+      title: "Face Detection",
+      desc: "Haar cascades for robust frontal face & eye detection with configurable thresholds.",
+    },
+    {
+      icon: <Cpu className="w-5 h-5" />,
+      title: "Feature Engineering",
+      desc: "Wavelet transforms + handcrafted embeddings; optional PCA for dimensionality reduction.",
+    },
+    {
+      icon: <Zap className="w-5 h-5" />,
+      title: "Fast Matching",
+      desc: "Vector search over trained dataset with confidence scoring & top‑K retrieval.",
+    },
+    {
+      icon: <Database className="w-5 h-5" />,
+      title: "MySQL Lookup",
+      desc: "Instantly returns attached profile/metadata from a relational store.",
+    },
+    {
+      icon: <Server className="w-5 h-5" />,
+      title: "FastAPI Interface",
+      desc: "Production‑ready REST endpoints with request validation & CORS.",
+    },
+    {
+      icon: <ShieldCheck className="w-5 h-5" />,
+      title: "Privacy Controls",
+      desc: "Opt‑in enrollment, salted hashes for IDs, and audit logs.",
+    },
+  ];
+
+  const endpoints = [
+    {
+      method: "POST",
+      path: "/match",
+      body: `{
+  "image": "<base64 or multipart>",
+  "top_k": 3,
+  "threshold": 0.78
+}`,
+      desc: "Returns best matches + confidence and associated MySQL records.",
+    },
+    {
+      method: "POST",
+      path: "/enroll",
+      body: `{
+  "person_id": "EMP-1024",
+  "image": "<base64 or multipart>",
+  "metadata": {"name": "Jane Doe", "role": "Analyst"}
+}`,
+      desc: "Adds a new face to the dataset and persists profile/metadata.",
+    },
+    {
+      method: "GET",
+      path: "/faces/{person_id}",
+      body: ``,
+      desc: "Fetch profile & enrollment history.",
+    },
+    {
+      method: "GET",
+      path: "/health",
+      body: ``,
+      desc: "Service healthcheck for uptime monitors.",
+    },
+  ];
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-background to-muted/30 text-foreground">
+      {/* NAVBAR */}
+      <header className="sticky top-0 z-30 backdrop-blur supports-[backdrop-filter]:bg-background/70 border-b">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-2xl bg-primary/10">
+              <Sparkles className="h-4 w-4" />
+            </span>
+            <span className="font-semibold">FaceMatch</span>
+            <Badge className="ml-2" variant="secondary">AI</Badge>
+          </div>
+          <div className="flex items-center gap-2">
+            <Button asChild variant="ghost" size="sm">
+              <a href="#demo"><PlayCircle className="w-4 h-4 mr-2"/>Live Demo</a>
+            </Button>
+            <Button asChild variant="outline" size="sm">
+              <a href="#contact"><Mail className="w-4 h-4 mr-2"/>Contact</a>
+            </Button>
+            <Button asChild size="sm">
+              <a href="#repo"><Github className="w-4 h-4 mr-2"/>Source</a>
+            </Button>
+          </div>
+        </div>
+      </header>
+
+      {/* HERO */}
+      <div className="relative overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24"
+        >
+          <div className="grid lg:grid-cols-2 gap-10 items-center">
+            <div>
+              <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight">
+                Custom <span className="bg-gradient-to-r from-primary to-purple-500 bg-clip-text text-transparent">Face Matching Engine</span>
+              </h1>
+              <p className="mt-4 text-lg text-muted-foreground">
+                Real‑time detection and recognition with Python, OpenCV, PyWavelets and FastAPI — wired to MySQL for instant profile retrieval. Built for accuracy, speed, and privacy.
+              </p>
+              <div className="mt-6 flex flex-wrap items-center gap-2">
+                <Pill><Camera className="w-3.5 h-3.5 mr-1"/>OpenCV</Pill>
+                <Pill><Code2 className="w-3.5 h-3.5 mr-1"/>FastAPI</Pill>
+                <Pill><Database className="w-3.5 h-3.5 mr-1"/>MySQL</Pill>
+                <Pill><Cpu className="w-3.5 h-3.5 mr-1"/>PyWT</Pill>
+              </div>
+              <div className="mt-8 flex gap-3">
+                <Button asChild>
+                  <a href="#demo"><Rocket className="w-4 h-4 mr-2"/>Try the API</a>
+                </Button>
+                <Button asChild variant="outline">
+                  <a href="#overview"><BookOpen className="w-4 h-4 mr-2"/>Read Overview</a>
+                </Button>
+              </div>
+              <div className="mt-6 grid grid-cols-3 gap-4 max-w-lg">
+                <Stat value="~98%" label="Detection Precision" />
+                <Stat value="< 120ms" label="Median Match Latency" />
+                <Stat value="> 25k" label="Faces Indexed" />
+              </div>
+            </div>
+
+            <Card className="relative overflow-hidden border-dashed">
+              <CardContent className="p-0">
+                {/* Placeholder preview panel */}
+                <div className="aspect-video w-full bg-muted flex flex-col items-center justify-center">
+                  <span className="text-sm text-muted-foreground">Drop a face image → get match + profile</span>
+                  <div className="mt-4 flex gap-2">
+                    <Badge variant="secondary">/match</Badge>
+                    <Badge variant="secondary">multipart/form-data</Badge>
+                    <Badge variant="secondary">JSON result</Badge>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* OVERVIEW */}
+      <Section id="overview" title="Project Overview" subtitle="From detection to database — an end‑to‑end pipeline.">
+        <div className="grid lg:grid-cols-3 gap-6">
+          {features.map((f, i) => (
+            <Card key={i} className="hover:shadow-lg transition-shadow">
+              <CardHeader className="flex-row items-center gap-3">
+                <div className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10">
+                  {f.icon}
+                </div>
+                <CardTitle className="text-base">{f.title}</CardTitle>
+              </CardHeader>
+              <CardContent className="pt-0 text-sm text-muted-foreground">{f.desc}</CardContent>
+            </Card>
+          ))}
+        </div>
+      </Section>
+
+      {/* ARCHITECTURE */}
+      <Section id="architecture" title="Architecture" subtitle="Modular components to keep things fast, testable, and scalable.">
+        <Card>
+          <CardContent className="p-6">
+            <div className="grid lg:grid-cols-2 gap-6 items-center">
+              <ul className="space-y-2 text-sm">
+                <li>• <b>Ingest</b>: image → cv2 Haar cascades for faces & eyes</li>
+                <li>• <b>Process</b>: grayscale, align, crop, normalize</li>
+                <li>• <b>Features</b>: pywt 2D wavelets → vector embedding</li>
+                <li>• <b>Index</b>: trained set in memory + on-disk persistence</li>
+                <li>• <b>Match</b>: cosine similarity, top‑K retrieval</li>
+                <li>• <b>Resolve</b>: MySQL profile, metadata, permissions</li>
+                <li>• <b>Serve</b>: FastAPI REST, CORS, auth middleware</li>
+              </ul>
+              {/* Simple SVG flow diagram */}
+              <div className="w-full">
+                <svg viewBox="0 0 800 200" className="w-full h-auto">
+                  <defs>
+                    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                      <path d="M 0 0 L 10 5 L 0 10 z" />
+                    </marker>
+                  </defs>
+                  {[
+                    "Upload",
+                    "Detect",
+                    "Preprocess",
+                    "Wavelets",
+                    "Match",
+                    "MySQL",
+                    "Response",
+                  ].map((label, idx) => (
+                    <g key={idx} transform={`translate(${40 + idx * 110}, 60)`}>
+                      <rect width="100" height="50" rx="12" className="fill-muted stroke-1" />
+                      <text x="50" y="28" textAnchor="middle" className="text-xs">
+                        {label}
+                      </text>
+                      {idx < 6 && (
+                        <line x1="100" y1="25" x2="120" y2="25" strokeWidth="2" markerEnd="url(#arrow)" />
+                      )}
+                    </g>
+                  ))}
+                </svg>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </Section>
+
+      {/* API */}
+      <Section id="demo" title="Public API" subtitle="Minimal, clean endpoints with strong typing and sensible defaults.">
+        <div className="grid md:grid-cols-2 gap-6">
+          {endpoints.map((ep, i) => (
+            <Card key={i} className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-base">
+                  <Badge variant="outline">{ep.method}</Badge>
+                  <code className="font-mono">{ep.path}</code>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                {ep.body && (
+                  <pre className="bg-muted rounded-xl p-4 text-xs overflow-x-auto">
+{ep.body}
+                  </pre>
+                )}
+                <p className="text-sm text-muted-foreground mt-2">{ep.desc}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+        <div className="mt-6 flex flex-wrap gap-2">
+          <Pill><Workflow className="w-3.5 h-3.5 mr-1"/>Uvicorn</Pill>
+          <Pill>JWT Auth (opt‑in)</Pill>
+          <Pill>Rate Limits</Pill>
+          <Pill>Audit Logs</Pill>
+        </div>
+      </Section>
+
+      {/* TECH STACK */}
+      <Section id="stack" title="Tech Stack" subtitle="Focused on reliability and performance.">
+        <div className="flex flex-wrap gap-2">
+          {tech.map((t) => (
+            <Badge key={t} variant="secondary" className="px-3 py-1 rounded-full">{t}</Badge>
+          ))}
+        </div>
+      </Section>
+
+      {/* RESULTS / METRICS */}
+      <Section id="results" title="Results" subtitle="Representative metrics from evaluation runs (replace with your actual numbers).">
+        <div className="grid sm:grid-cols-3 gap-6">
+          <Card className="text-center">
+            <CardHeader>
+              <CardTitle className="text-base">Accuracy</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-4xl font-extrabold">97.8%</div>
+              <p className="text-sm text-muted-foreground mt-2">Top‑1 on validation set</p>
+            </CardContent>
+          </Card>
+          <Card className="text-center">
+            <CardHeader>
+              <CardTitle className="text-base">Latency</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-4xl font-extrabold">112ms</div>
+              <p className="text-sm text-muted-foreground mt-2">Median on CPU @ 720p</p>
+            </CardContent>
+          </Card>
+          <Card className="text-center">
+            <CardHeader>
+              <CardTitle className="text-base">Throughput</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-4xl font-extrabold">86 rps</div>
+              <p className="text-sm text-muted-foreground mt-2">Batch inference enabled</p>
+            </CardContent>
+          </Card>
+        </div>
+      </Section>
+
+      {/* GALLERY */}
+      <Section id="gallery" title="Gallery" subtitle="Screenshots & sample detections (placeholders).">
+        <div className="grid md:grid-cols-3 gap-4">
+          {[1,2,3,4,5,6].map((n) => (
+            <div key={n} className="aspect-video rounded-2xl bg-muted flex items-center justify-center text-muted-foreground">
+              Screenshot {n}
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* WRITE-UP */}
+      <Section id="writeup" title="Behind the Scenes" subtitle="How I built, tuned, and shipped this.">
+        <Card>
+          <CardContent className="prose dark:prose-invert max-w-none">
+            <ul className="mt-6">
+              <li><b>Detection:</b> cv2.CascadeClassifier with tuned <code>scaleFactor</code>, <code>minNeighbors</code>, and ROI checks to reduce false positives.</li>
+              <li><b>Preprocessing:</b> grayscale, CLAHE, eye‑based alignment, and face crop padded by 10%.</li>
+              <li><b>Features:</b> multi‑level 2D wavelets (pywt) + vector concatenation; optional PCA fit on enrollment set.</li>
+              <li><b>Matching:</b> cosine similarity with adaptive thresholding; top‑K re‑rank using eye distance consistency.</li>
+              <li><b>API:</b> FastAPI with Pydantic models, async file IO, and streaming responses for batch.</li>
+              <li><b>Storage:</b> MySQL for profiles; embeddings persisted as blobs or sidecar files with DB pointers.</li>
+              <li><b>Ops:</b> Dockerized, health checks, structured logging, and Prometheus metrics.</li>
+            </ul>
+          </CardContent>
+        </Card>
+      </Section>
+
+      {/* CTA */}
+      <Section id="repo" title="Try It" subtitle="Spin it up locally or reach out for a walkthrough.">
+        <div className="grid lg:grid-cols-2 gap-6 items-stretch">
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-base">Quickstart</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <pre className="bg-muted rounded-xl p-4 text-xs overflow-x-auto"><code>{`# 1) Clone & install
+pip install -r requirements.txt
+
+# 2) Set environment
+export MYSQL_URL="mysql+pymysql://user:pass@localhost:3306/facematch"
+
+# 3) Run API
+uvicorn app.main:app --reload --port 8000
+
+# 4) Call endpoint
+curl -X POST http://localhost:8000/match \
+  -F "image=@sample.jpg" \
+  -F "top_k=3" \
+  -F "threshold=0.78"`}</code></pre>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-base">Security & Ethics</CardTitle>
+            </CardHeader>
+            <CardContent className="text-sm text-muted-foreground space-y-2">
+              <p>• Consent‑based enrollment and clear data retention policy.</p>
+              <p>• Opt‑out mechanism and right‑to‑be‑forgotten workflow.</p>
+              <p>• PII minimization; store only what's necessary for the use‑case.</p>
+              <p>• Role‑based access & rate limits to prevent abuse.</p>
+            </CardContent>
+          </Card>
+        </div>
+      </Section>
+
+      {/* CONTACT */}
+      <Section id="contact" title="Contact" subtitle="Want a custom build, integration, or consulting? Let’s talk.">
+        <div className="grid md:grid-cols-3 gap-6">
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-base flex items-center gap-2"><Mail className="w-4 h-4"/> Email</CardTitle>
+            </CardHeader>
+            <CardContent className="text-sm">your.name@email.com</CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-base flex items-center gap-2"><Github className="w-4 h-4"/> GitHub</CardTitle>
+            </CardHeader>
+            <CardContent className="text-sm">github.com/yourhandle/facematch</CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-base flex items-center gap-2"><LinkIcon className="w-4 h-4"/> Live</CardTitle>
+            </CardHeader>
+            <CardContent className="text-sm">demo.yourdomain.com</CardContent>
+          </Card>
+        </div>
+      </Section>
+
+      {/* FOOTER */}
+      <footer className="border-t">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 flex items-center justify-between">
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <Award className="w-4 h-4"/>
+            <span>Built with FastAPI, OpenCV, & ❤</span>
+          </div>
+          <div className="text-xs text-muted-foreground">© {new Date().getFullYear()} Your Name</div>
+        </div>
+      </footer>
+    </div>
+  );
+}
