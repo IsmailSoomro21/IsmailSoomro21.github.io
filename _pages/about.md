@@ -7,22 +7,22 @@ redirect_from:
   - /about.html
 ---
 
+<!-- height="500px" -->
+![Illustration of combining vision and language modalities](/images/about1.png){: .align-right width="400px"}
 
-![Illustration of combining vision and language modalities](/images/about1.png){: .align-right width="400px" height="500px"}
+* I focus on strong leadership, effective team management, and fostering a collaborative work environment.
 
-* 🧑‍💼 I focus on strong leadership, effective team management, and fostering a collaborative work environment.
+* I have developed and deployed multiple AI-powered services.
 
-* 🚀 I have developed and deployed multiple AI-powered services.
+<!-- <br><br> -->
 
-<br><br>
+* I am actively pursuing AWS Data Engineering and Machine Learning Associate (DEA/MLA) certification.
 
-* 📜 I am actively pursuing AWS Data Engineering and Machine Learning Associate (DEA/MLA) certification.
+* I am passionate about exploring AI research and keeping up with the latest developments
 
-* 🔬 I am passionate about exploring AI research and keeping up with the latest developments
+* I've Assisted and mentored others in machine learning and AI projects.
 
-* 🤝 I've Assisted and mentored others in machine learning and AI projects.
-
-* 🌐 I am Passionate about building scalable, real-world AI solutions
+* I am Passionate about building scalable, real-world AI solutions
 
 
 
@@ -37,10 +37,10 @@ redirect_from:
 * From Ideas to AI Solutions
   * I transform concepts into functioning applications. Whether it’s designing a data pipeline, training a model, or deploying a service on AWS, I focus on building AI solutions that are scalable, efficient, and impactful.
 
-*  Machine Learning in Action
+* Machine Learning in Action
   * I love putting theory into practice. By building hands-on projects and experimenting with datasets, I demonstrate how machine learning can automate tasks, provide insights, and enhance decision-making in diverse domains.
 
-*  Turning Data into Intelligence
+* Turning Data into Intelligence
   * Data is at the heart of AI. I specialize in extracting meaningful insights from data, applying machine learning models, and deploying intelligent systems that help businesses and users make smarter decisions.
 
 

@@ -29,11 +29,24 @@ A production‑ready system that finds visually similar faces on the web from a 
 4. Per‑image Pipeline:
     * YOLOv8 Person Detection → person crops.
     * InsightFace Face Detection → face boxes within person crops.
-    * Embedding Extraction → 512‑D face vectors.
+    * Embedding Extraction → 256-D face vectors.
     * Cosine Similarity (query vs. candidates) → ranked list.
 5. Fallback Logic: If YOLOv8 or face detection fails, return the original image region; if a model errors, switch to a lighter backup.
 6. Response: Ranked matches with scores, thumbnails, and provenance links.
-Client → FastAPI → Background Job Queue → Downloader(s) → Detection → Embeddings → Similarity → Results Store → API Response
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;font-family:sans-serif;">
+  <div style="padding:10px 15px;border:1px solid #ccc;border-radius:8px;background:#f9f9f9;">Client</div> →
+  <div style="padding:10px 15px;border:1px solid #ccc;border-radius:8px;background:#f9f9f9;">FastAPI</div> →
+  <div style="padding:10px 15px;border:1px solid #ccc;border-radius:8px;background:#f9f9f9;">Trigger Query</div> →
+  <div style="padding:10px 15px;border:1px solid #ccc;border-radius:8px;background:#f9f9f9;">Image Download</div> →
+  <div style="padding:10px 15px;border:1px solid #ccc;border-radius:8px;background:#f9f9f9;">Job Queue</div> →
+  <div style="padding:10px 15px;border:1px solid #ccc;border-radius:8px;background:#f9f9f9;">Person Detection</div> →
+  <div style="padding:10px 15px;border:1px solid #ccc;border-radius:8px;background:#f9f9f9;">Face Detection</div> →
+  <div style="padding:10px 15px;border:1px solid #ccc;border-radius:8px;background:#f9f9f9;">Embeddings</div> →
+  <div style="padding:10px 15px;border:1px solid #ccc;border-radius:8px;background:#f9f9f9;">Similarity Search</div> →
+  <div style="padding:10px 15px;border:1px solid #ccc;border-radius:8px;background:#f9f9f9;">JSON Result Store</div> →
+  <div style="padding:10px 15px;border:1px solid #ccc;border-radius:8px;background:#f9f9f9;">API Response</div>
+</div>
+
 
 ## Detailed Processing Flow
 1. Upload & Validation
@@ -43,7 +56,7 @@ Client → FastAPI → Background Job Queue → Downloader(s) → Detection → 
 3. Preprocessing
     * Resize/pad to model input; EXIF orientation handling.
 4. Detection & Embeddings
-    * YOLOv8 identifies person regions (confidence threshold & NMS tuned).
+    * YOLOv8 identifies person regions (confidence threshold, iou_threshold, dimensions & Blur tuned).
     * InsightFace (retinaface/antelope variants) localizes faces and generates face embeddings.
 5. Similarity & Ranking
     * L2‑normalized vectors; cosine similarity for ranking; top‑K selection with tie‑breakers (sharpness, face size, source quality).
@@ -68,62 +81,87 @@ Client → FastAPI → Background Job Queue → Downloader(s) → Detection → 
 * Caching: Reuse embeddings for repeated candidates; disk + in‑memory caches keyed by content hash.
 
 ## FastAPI Surface (Sample)
-* POST /match — upload an image, returns a task id immediately (async) or synchronous result for small jobs.
-* GET /match/{task_id} — retrieve results and logs.
-* GET /healthz — liveness/readiness checks.
+* POST /Process-s3-image — upload an image, returns a task id immediately (async) or synchronous result for small jobs.
+* GET /status/{request_id} — retrieve results and logs.
+* GET /status - Give overall status of all the requests failed, completed pending, queued 
+* GET /health — liveness/readiness checks.
+
 Response (simplified):
+
+```python	
 {
-  "task_id": "c5a0...",
+  "request_id": "9d4e7261",
   "status": "completed",
-  "query": {"faces": 1},
-  "matches": [
-    {"url": "https://...", "score": 0.92, "fallback": false, "thumb": "s3://.../crop.jpg"},
-    {"url": "https://...", "score": 0.88, "fallback": false}
-  ],
-  "meta": {"elapsed_ms": 1840, "engine": "insightface_r100", "similarity": "cosine"}
+  "input_working_dir": "input/9d4e7261",
+  "output_working_dir": "output/9d4e7261",
+  "error": null,
+  "retry_count": 0,
+  "max_retries": 3,
+  "time_taken": 69.27256917953491,
+  "result": [
+    {
+      "query_image": "query-caaf1a9f.jpg",
+      "query_uri": "s3://face-engine-bucket/Lionel_Messi_20180626 (1).jpg",
+      "matches": [
+        {
+          "pool_image": "pool-4.jpg",
+          "image_uri": "s3://face-engine-pool-bucket/136054219.jpg.0.jpg",
+          "similarity": 0.5416,
+          "match_status": "MATCH"
+        }
+      ]
+    },
+    {
+      "query_image": "query-caaf1a9f.jpg",
+      "query_uri": "s3://face-engine-bucket/Lionel_Messi_20180626 (1).jpg",
+      "matches": [
+        {
+          "pool_image": "pool-43.jpg",
+          "image_uri": "s3://face-engine-pool-bucket/skysports-messi-lionel-barcelona_5006546.jpg",
+          "similarity": 0.5594,
+          "match_status": "MATCH"
+        }
+      ]
+    },
+  ]
 }
+```
 
 ## Deployment & Ops (AWS)
-* Compute: Containerized services on ECS/EKS or EC2 with GPU instances where available.
+* Compute: Containerized services on ECS Farget.
 * Storage: S3 for artifacts; lifecycle policies for cost control.
 * Networking: Private subnets, NAT for egress, security groups locked to necessary ports.
-* Monitoring: CloudWatch metrics + logs; alarms on error rates, latency, and GPU mem.
-* CI/CD: Image builds, vulnerability scans, and blue/green deployments.
+* Monitoring: CloudWatch metrics + logs; alarms on error rates, latency.
 
-## Security & Privacy
+<!-- ## Security & Privacy
 * Explicit user consent for web retrieval.
 * PII‑aware logging (hash or redact URLs and filenames).
 * Signed URLs for artifact access; short TTLs.
-* Configurable retention and right‑to‑erasure endpoints.
+* Configurable retention and right‑to‑erasure endpoints. -->
 
 ## Tech Stack
-* Backend: Python, FastAPI
+* Backend: Python, FastAPI, OOP
 * Models: YOLOv8 (person), InsightFace (face), cosine similarity for ranking
-* Infra: AWS (ECS/EKS/EC2), S3, CloudWatch
-* Data: Local disk cache + S3, content‑hash indexing
+* Infra: AWS (ECS/ Farget), S3, CloudWatch
+* Data: Local disk cache + S3
 
 ## Results & Metrics (Illustrative)
 * Median end‑to‑end latency: ~1.8s for 20 candidates on a T4 GPU
 * Top‑1 precision@10: ~0.91 (internal validation set)
 * Download success rate: > 98% with retry policies
-Note: Replace with your live numbers; add a small table or chart if desired.
 
-## Challenges & Lessons
-* Handling varied image qualities and occlusions required tuned thresholds and prefilters.
-* Concurrency without overloading GPUs demanded semaphore‑guarded pools.
-* Source diversity (CDNs, throttling) necessitated resilient downloaders.
-
+<!-- 
 ## Roadmap
 * Add CLIP‑based re‑ranking for context cues.
 * Integrate vector DB (FAISS/pgvector) for faster large‑scale retrieval.
 * Progressive result streaming and UI gallery.
-* Per‑region legal/compliance toggles.
+* Per‑region legal/compliance toggles. -->
 
-## How to Demo
+<!-- ## How to Demo
 1. Upload a portrait to /match.
 2. Poll /match/{task_id} or use the synchronous flag.
 3. Inspect returned matches, scores, and crop overlays.
-4. Review logs/metrics from CloudWatch.
+4. Review logs/metrics from CloudWatch. -->
 
 ## Credits
 * Models: Ultralytics YOLOv8, InsightFace.
@@ -159,4 +197,7 @@ FaceMatchingV1/
 ```
 
 * Env Flags
-    * MAX_CONCURRENCY, SIM_THRESHOLD, DOWNLOAD_TIMEOUT, FALLBACK_MODEL
+    * MAX_CONCURRENCY, DOWNLOAD_TIMEOUT, FALLBACK_MODEL
+
+
+

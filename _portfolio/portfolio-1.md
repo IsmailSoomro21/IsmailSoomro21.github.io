@@ -70,8 +70,8 @@ A high-performance FastAPI-based microservice designed to detect and count juggl
 * Logging & Monitoring: Python logging, Prometheus/Grafana (optional)
 
 
-# Output Demo Link
+## Output Demo Link
 * https://drive.google.com/file/d/1_8EoOugfJ8-ROnChKjtq9blb-o6epvPL/view?usp=drive_link
 
-# Service Demo Link
+## Service Demo Link
 * https://drive.google.com/file/d/1msqynL_ZfO3MOXqy396FJ1hRh4-h1oGG/view?usp=drive_link
