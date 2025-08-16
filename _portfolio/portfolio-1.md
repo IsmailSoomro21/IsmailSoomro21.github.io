@@ -1,5 +1,5 @@
 ---
-title: "1. AI Juggling Detection Serivce"
+title: "AI Juggling Detection Serivce"
 excerpt: "Real-time multi-stream juggling detection<br/><img src='/images/proj-1.png' >"
 collection: portfolio
 ---
@@ -71,7 +71,7 @@ A high-performance FastAPI-based microservice designed to detect and count juggl
 
 
 # Output Demo Link
-https://drive.google.com/file/d/1_8EoOugfJ8-ROnChKjtq9blb-o6epvPL/view?usp=drive_link
+* https://drive.google.com/file/d/1_8EoOugfJ8-ROnChKjtq9blb-o6epvPL/view?usp=drive_link
 
 # Service Demo Link
-https://drive.google.com/file/d/1msqynL_ZfO3MOXqy396FJ1hRh4-h1oGG/view?usp=drive_link
+* https://drive.google.com/file/d/1msqynL_ZfO3MOXqy396FJ1hRh4-h1oGG/view?usp=drive_link
