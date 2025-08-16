@@ -1,6 +1,6 @@
 ---
 title: "1. AI Juggling Detection Serivce"
-excerpt: "Real-time multi-stream juggling detection<br/><img src='/images/proj-1.png' width='500' height='300' />"
+excerpt: "Real-time multi-stream juggling detection<br/><img src='/images/proj-1.png' >"
 collection: portfolio
 ---
 
