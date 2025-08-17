@@ -101,10 +101,7 @@ Voice Cloning Service
   daily requests, and deployed on AWS with Docker and DynamoDB for scalable, low-latency storage and retrieval of
   cloned voice profiles.
 
-* Monitoring & Logging
-    * Health check endpoints for uptime monitoring.
-    * Detailed logs for requests, responses, and errors.
-    * Metrics for processing time and task performance.
+## Education 
 
 <!-- Publications
 ======
