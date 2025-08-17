@@ -46,7 +46,6 @@ TensorFlow
 * **Testing & Quality Assurance**: Unit Testing, Integration Testing, Bug Tracking, Debugging
 * **Methodologies**: Agile, Scrum
 
-
 <!-- 
 Projects
 ====== -->
@@ -102,6 +101,7 @@ Voice Cloning Service
 * FSc, Pre-Engineering, Brain College, RYK, 2016 – 2018
 
 * BSCS 1st Semester, Virtual University, 2025-onwards
+
 <!-- Publications
 ======
   <ul>{% for post in site.publications reversed %}
