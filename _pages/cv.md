@@ -32,9 +32,9 @@ redirect_from:
   * Duties included: Tagging issues
   * Supervisor: Professor Git -->
   
-Skills
-======
-<!-- ## Skills -->
+<!-- Skills
+====== -->
+## Skills
 * **Programming & Scripting**: Python, SQL, FastAPI, OOP
 * **Cloud & Infrastructure**: AWS, Docker
 * **Databases**: MySQL, DynamoDB
@@ -46,14 +46,11 @@ TensorFlow
 * **Testing & Quality Assurance**: Unit Testing, Integration Testing, Bug Tracking, Debugging
 * **Methodologies**: Agile, Scrum
 
-Education 
-======
-* FSc, Pre-Engineering, Brain College, RYK, 2016 – 2018
 
-* BSCS 1st Semester, Virtual University, 2025-onwards
-
+<!-- 
 Projects
-======
+====== -->
+## Projects
 * **Top Deployed MicroServices**: Juggle Detection Counter Service, Face Matching Engine Service,
 Voice Cloning Service
 
@@ -102,7 +99,9 @@ Voice Cloning Service
   cloned voice profiles.
 
 ## Education 
+* FSc, Pre-Engineering, Brain College, RYK, 2016 – 2018
 
+* BSCS 1st Semester, Virtual University, 2025-onwards
 <!-- Publications
 ======
   <ul>{% for post in site.publications reversed %}
