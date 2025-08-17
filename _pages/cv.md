@@ -7,7 +7,7 @@ redirect_from:
   - /resume
 ---
 
-{% include base_path %}
+<!-- {% include base_path %} -->
 
 <!-- Education
 ======
@@ -50,7 +50,7 @@ TensorFlow
 * **Top Deployed MicroServices**: Juggle Detection Counter Service, Face Matching Engine Service,
 Voice Cloning Service
 
-* C**omputer Vision**:
+* **Computer Vision**:
   1. **Juggle Detection Counter Service (Deployed)**: Developed and deployed an asynchronous,
   multi-threaded juggle counting service on AWS that used Agentic AI for autonomous task orchestration, integrating
   YOLOv11 for detection, FastAPI for async APIs, and Docker for scalable deployment. Achieved 98% accuracy
