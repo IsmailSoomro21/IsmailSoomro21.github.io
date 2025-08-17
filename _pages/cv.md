@@ -32,9 +32,9 @@ redirect_from:
   * Duties included: Tagging issues
   * Supervisor: Professor Git -->
   
-<!-- Skills
-====== -->
-## Skills
+Skills
+======
+<!-- ## Skills -->
 * **Programming & Scripting**: Python, SQL, FastAPI, OOP
 * **Cloud & Infrastructure**: AWS, Docker
 * **Databases**: MySQL, DynamoDB
@@ -46,7 +46,8 @@ TensorFlow
 * **Testing & Quality Assurance**: Unit Testing, Integration Testing, Bug Tracking, Debugging
 * **Methodologies**: Agile, Scrum
 
-## Projects
+Projects
+======
 * **Top Deployed MicroServices**: Juggle Detection Counter Service, Face Matching Engine Service,
 Voice Cloning Service
 
@@ -93,10 +94,9 @@ Voice Cloning Service
   API. Optimized with parallel request handling and multi-threaded preprocessing to achieve ¡1.5 s synthesis for 1,200+
   daily requests, and deployed on AWS with Docker and DynamoDB for scalable, low-latency storage and retrieval of
   cloned voice profiles.
-<!-- 
-Education
-====== -->
-## Education
+
+Education 
+======
 * FSc, Pre-Engineering, Brain College, RYK, 2016 – 2018
 
 * BSCS 1st Semester, Virtual University, 2025-onwards
