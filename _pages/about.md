@@ -10,6 +10,8 @@ redirect_from:
 <!-- height="500px" -->
 ![Illustration of combining vision and language modalities](/images/about1.png){: .align-right width="400px"}
 
+* I have been working in the field of AI for the past 1.5 years, gaining hands-on experience.
+
 * I focus on strong leadership, effective team management, and fostering a collaborative work environment.
 
 * I have developed and deployed multiple AI-powered services.
