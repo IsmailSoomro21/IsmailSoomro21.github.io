@@ -7,7 +7,7 @@ redirect_from:
   - /resume
 ---
 
-<!-- {% include base_path %} -->
+{% include base_path %}
 
 <!-- Education
 ======
@@ -45,6 +45,12 @@ Skills
 TensorFlow
 * **Testing & Quality Assurance**: Unit Testing, Integration Testing, Bug Tracking, Debugging
 * **Methodologies**: Agile, Scrum
+
+Education 
+======
+* FSc, Pre-Engineering, Brain College, RYK, 2016 – 2018
+
+* BSCS 1st Semester, Virtual University, 2025-onwards
 
 Projects
 ======
@@ -99,12 +105,6 @@ Voice Cloning Service
     * Health check endpoints for uptime monitoring.
     * Detailed logs for requests, responses, and errors.
     * Metrics for processing time and task performance.
-
-Education
-======
-* FSc, Pre-Engineering, Brain College, RYK, 2016 – 2018
-
-* BSCS 1st Semester, Virtual University, 2025-onwards
 
 <!-- Publications
 ======
