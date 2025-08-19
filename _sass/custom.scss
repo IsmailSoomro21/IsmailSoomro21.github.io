@@ -1,0 +1,37 @@
+/* _sass/custom.scss */
+
+/* 🔴 Fix: Hamburger overlap */
+.masthead__menu-toggle {
+    display: none;
+  }
+  
+  @media (max-width: 768px) {
+    .masthead__menu-toggle {
+      display: block;
+    }
+    .masthead__menu-item {
+      display: none;
+    }
+  }
+  
+  /* 🟣 Fix: Sidebar hidden on mobile */
+  @media (max-width: 768px) {
+    .sidebar {
+      float: none;
+      width: 100%;
+      order: 2;
+    }
+    .page__content {
+      order: 1;
+      width: 100%;
+    }
+  }
+  
+  /* 🔵 Fix: Navbar overflow */
+  .masthead__menu {
+    display: flex;
+    flex-wrap: wrap;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
