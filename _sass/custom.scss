@@ -13,19 +13,47 @@
 //       display: none;
 //     }
 //   }
-  
-/* 🟣 Fix: Sidebar hidden on mobile */
+
+/* 🟣 Fix: Force sidebar to show on mobile */
 @media (max-width: 768px) {
-  .sidebar {
+  .sidebar,
+  .page__sidebar {
+    display: block !important;
+    visibility: visible !important;
+    position: static !important;
     float: none;
     width: 100%;
-    order: 2;
-  }
-  .page__content {
     order: 1;
+    margin-bottom: 1rem;
+  }
+  
+  .page__content {
+    order: 2;
     width: 100%;
   }
+  
+  /* Force all sidebar content to show */
+  .author__avatar,
+  .author__content,
+  .author__urls-wrapper,
+  .author__urls {
+    display: block !important;
+    visibility: visible !important;
+  }
 }
+  
+// /* 🟣 Fix: Sidebar hidden on mobile */
+// @media (max-width: 768px) {
+//   .sidebar {
+//     float: none;
+//     width: 100%;
+//     order: 2;
+//   }
+//   .page__content {
+//     order: 1;
+//     width: 100%;
+//   }
+// }
 
 /* 🔵 Fix: Navbar overflow */
 .masthead__menu {
