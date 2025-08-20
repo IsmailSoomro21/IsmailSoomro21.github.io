@@ -1,4 +1,4 @@
-// /* _sass/custom.scss */
+/* _sass/custom.scss */
 
 // /* 🔴 Fix: Hamburger overlap */
 // .masthead__menu-toggle {
@@ -14,171 +14,25 @@
 //     }
 //   }
   
-//   /* 🟣 Fix: Sidebar hidden on mobile */
-//   @media (max-width: 768px) {
-//     .sidebar {
-//       float: none;
-//       width: 100%;
-//       order: 2;
-//     }
-//     .page__content {
-//       order: 1;
-//       width: 100%;
-//     }
-//   }
-  
-//   /* 🔵 Fix: Navbar overflow */
-//   .masthead__menu {
-//     display: flex;
-//     flex-wrap: wrap;
-//     overflow-x: auto;
-//     white-space: nowrap;
-//   }
-  
-
-/* _sass/custom.scss */
-
-/* 🔴 Fix: Remove hamburger menu completely */
-.greedy-nav button {
-  display: none !important;
-}
-
-/* Keep all navigation items visible on all screen sizes */
-.visible-links {
-  display: flex !important;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-/* Mobile navigation adjustments */
+/* 🟣 Fix: Sidebar hidden on mobile */
 @media (max-width: 768px) {
-  .masthead__menu {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+  .sidebar {
+    float: none;
+    width: 100%;
+    order: 2;
   }
-  
-  .visible-links {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding: 0 1rem;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
-  }
-  
-  .visible-links::-webkit-scrollbar {
-    display: none; /* Chrome, Safari */
-  }
-  
-  .masthead__menu-item {
-    flex-shrink: 0;
-    white-space: nowrap;
-  }
-  
-  .masthead__menu-item a {
-    padding: 0.5rem 0.75rem;
-    font-size: 0.9rem;
-  }
-}
-
-/* 🟣 Fix: Force sidebar to show on mobile */
-@media (max-width: 768px) {
-  /* Main layout adjustments */
-  .layout--single .page,
-  .layout--archive .page {
-    display: flex !important;
-    flex-direction: column;
-  }
-  
-  /* Force sidebar to be visible and first */
-  .sidebar,
-  .page__sidebar {
-    display: block !important;
-    visibility: visible !important;
-    position: static !important;
-    float: none !important;
-    width: 100% !important;
-    order: 1 !important;
-    margin: 0 0 1rem 0 !important;
-    padding: 1rem !important;
-    background: var(--sidebar-background, #f8f9fa);
-    border-radius: 8px;
-  }
-  
-  /* Force all sidebar content to show */
-  .author__avatar,
-  .author__avatar img,
-  .author__content,
-  .author__name,
-  .author__bio,
-  .author__urls-wrapper,
-  .author__urls {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-  }
-  
-  /* Style the author section nicely */
-  .author__avatar {
-    margin: 0 auto 1rem auto;
-    text-align: center;
-  }
-  
-  .author__content {
-    text-align: center;
-    margin-bottom: 1rem;
-  }
-  
-  /* Stack contact links vertically */
-  .author__urls {
-    display: flex !important;
-    flex-direction: column;
-    gap: 0.5rem;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .author__urls li {
-    display: block !important;
+  .page__content {
+    order: 1;
     width: 100%;
   }
-  
-  /* Main content comes after sidebar */
-  .page__content,
-  .page__inner-wrap {
-    order: 2 !important;
-    width: 100% !important;
-    float: none !important;
-  }
 }
 
-/* 🔵 Fix: Navbar container */
+/* 🔵 Fix: Navbar overflow */
 .masthead__menu {
-  position: relative;
-  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-x: auto;
+  white-space: nowrap;
 }
 
-/* Optional: Add JavaScript functionality */
-/* Add this script to your site to make the hamburger menu functional:
 
-document.addEventListener('DOMContentLoaded', function() {
-  const menuButton = document.querySelector('.greedy-nav button');
-  const visibleLinks = document.querySelector('.visible-links');
-  
-  if (menuButton && visibleLinks) {
-    menuButton.addEventListener('click', function() {
-      visibleLinks.classList.toggle('show');
-    });
-    
-    // Close menu when clicking outside
-    document.addEventListener('click', function(e) {
-      if (!menuButton.contains(e.target) && !visibleLinks.contains(e.target)) {
-        visibleLinks.classList.remove('show');
-      }
-    });
-  }
-});
-
-*/
