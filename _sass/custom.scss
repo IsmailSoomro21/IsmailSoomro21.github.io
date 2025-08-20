@@ -1,20 +1,74 @@
-/* _sass/custom.scss */
+// /* _sass/custom.scss */
 
-// /* 🔴 Fix: Hamburger overlap */
-// .masthead__menu-toggle {
-//     display: none;
+// // /* 🔴 Fix: Hamburger overlap */
+// // .masthead__menu-toggle {
+// //     display: none;
+// //   }
+  
+// //   @media (max-width: 768px) {
+// //     .masthead__menu-toggle {
+// //       display: block;
+// //     }
+// //     .masthead__menu-item {
+// //       display: none;
+// //     }
+// //   }
+
+// /* 🟣 Fix: Force sidebar to show on mobile */
+// @media (max-width: 768px) {
+//   .sidebar,
+//   .page__sidebar {
+//     display: block !important;
+//     visibility: visible !important;
+//     position: static !important;
+//     float: none;
+//     width: 100%;
+//     order: 1;
+//     margin-bottom: 1rem;
 //   }
   
-//   @media (max-width: 768px) {
-//     .masthead__menu-toggle {
-//       display: block;
-//     }
-//     .masthead__menu-item {
-//       display: none;
-//     }
+//   .page__content {
+//     order: 2;
+//     width: 100%;
 //   }
+  
+//   /* Force all sidebar content to show */
+//   .author__avatar,
+//   .author__content,
+//   .author__urls-wrapper,
+//   .author__urls {
+//     display: block !important;
+//     visibility: visible !important;
+//   }
+// }
+  
+// // /* 🟣 Fix: Sidebar hidden on mobile */
+// // @media (max-width: 768px) {
+// //   .sidebar {
+// //     float: none;
+// //     width: 100%;
+// //     order: 2;
+// //   }
+// //   .page__content {
+// //     order: 1;
+// //     width: 100%;
+// //   }
+// // }
 
-/* 🟣 Fix: Force sidebar to show on mobile */
+// /* 🔵 Fix: Navbar overflow */
+// .masthead__menu {
+//   display: flex;
+//   flex-wrap: wrap;
+//   overflow-x: auto;
+//   white-space: nowrap;
+// }
+
+
+/* ===============================
+   📌 Custom Layout Fixes
+   =============================== */
+
+/* 🟣 Sidebar always visible on mobile */
 @media (max-width: 768px) {
   .sidebar,
   .page__sidebar {
@@ -26,13 +80,13 @@
     order: 1;
     margin-bottom: 1rem;
   }
-  
+
   .page__content {
     order: 2;
     width: 100%;
   }
-  
-  /* Force all sidebar content to show */
+
+  /* Force author details to always show */
   .author__avatar,
   .author__content,
   .author__urls-wrapper,
@@ -41,26 +95,17 @@
     visibility: visible !important;
   }
 }
-  
-// /* 🟣 Fix: Sidebar hidden on mobile */
-// @media (max-width: 768px) {
-//   .sidebar {
-//     float: none;
-//     width: 100%;
-//     order: 2;
-//   }
-//   .page__content {
-//     order: 1;
-//     width: 100%;
-//   }
-// }
 
-/* 🔵 Fix: Navbar overflow */
+/* 🔵 Navbar: no hamburger, scroll if overflow */
 .masthead__menu {
   display: flex;
   flex-wrap: wrap;
   overflow-x: auto;
   white-space: nowrap;
+  -webkit-overflow-scrolling: touch; /* smooth scrolling on mobile */
 }
 
-
+/* Hide hamburger toggle completely */
+.masthead__menu-toggle {
+  display: none !important;
+}
