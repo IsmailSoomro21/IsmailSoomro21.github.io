@@ -1,59 +1,59 @@
-/* _sass/custom.scss */
+// /* _sass/custom.scss */
 
-// /* 🔴 Fix: Hamburger overlap */
-// .masthead__menu-toggle {
-//     display: none;
+// // /* 🔴 Fix: Hamburger overlap */
+// // .masthead__menu-toggle {
+// //     display: none;
+// //   }
+  
+// //   @media (max-width: 768px) {
+// //     .masthead__menu-toggle {
+// //       display: block;
+// //     }
+// //     .masthead__menu-item {
+// //       display: none;
+// //     }
+// //   }
+
+// /* 🟣 Fix: Force sidebar to show on mobile */
+// @media (max-width: 768px) {
+//   .sidebar,
+//   .page__sidebar {
+//     display: block !important;
+//     visibility: visible !important;
+//     position: static !important;
+//     float: none;
+//     width: 100%;
+//     order: 1;
+//     margin-bottom: 1rem;
 //   }
   
-//   @media (max-width: 768px) {
-//     .masthead__menu-toggle {
-//       display: block;
-//     }
-//     .masthead__menu-item {
-//       display: none;
-//     }
+//   .page__content {
+//     order: 2;
+//     width: 100%;
 //   }
-
-/* 🟣 Fix: Force sidebar to show on mobile */
-@media (max-width: 768px) {
-  .sidebar,
-  .page__sidebar {
-    display: block !important;
-    visibility: visible !important;
-    position: static !important;
-    float: none;
-    width: 100%;
-    order: 1;
-    margin-bottom: 1rem;
-  }
   
-  .page__content {
-    order: 2;
-    width: 100%;
-  }
-  
-  /* Force all sidebar content to show */
-  .author__avatar,
-  .author__content,
-  .author__urls-wrapper,
-  .author__urls {
-    display: block !important;
-    visibility: visible !important;
-  }
-}
+//   /* Force all sidebar content to show */
+//   .author__avatar,
+//   .author__content,
+//   .author__urls-wrapper,
+//   .author__urls {
+//     display: block !important;
+//     visibility: visible !important;
+//   }
+// }
 
-/* Hide hamburger toggle completely, even if JS adds it */
-.masthead__menu-toggle,
-.masthead__menu-toggle[style],
-.masthead__menu-toggle:before,
-.masthead__menu-toggle:after {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  width: 0 !important;
-  height: 0 !important;
-  pointer-events: none !important;
-}
+// /* Hide hamburger toggle completely, even if JS adds it */
+// .masthead__menu-toggle,
+// .masthead__menu-toggle[style],
+// .masthead__menu-toggle:before,
+// .masthead__menu-toggle:after {
+//   display: none !important;
+//   visibility: hidden !important;
+//   opacity: 0 !important;
+//   width: 0 !important;
+//   height: 0 !important;
+//   pointer-events: none !important;
+// }
 
 .masthead__menu {
   display: flex;
