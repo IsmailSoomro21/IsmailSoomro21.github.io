@@ -24,7 +24,7 @@ It leverages an Agentic AI service for voice cloning and audio generation from a
         * Output name
         * Generated text
     * This structure makes it simple for users to locate and manage their desired outputs efficiently.
-* Automatic Cleanup & Scalability:
+5. Automatic Cleanup & Scalability:
     * All outputs are automatically deleted 10 minutes after generation to optimize memory and maintain scalable performance, ensuring VoiceForge can handle high traffic seamlessly.
     * The platform uses thread pooling, parallel processing, and semaphores to efficiently handle multiple simultaneous requests, ensuring fast, reliable performance for all users.
 
