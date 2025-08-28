@@ -6,7 +6,7 @@ collection: portfolio
 
 
 ## Introduction:
-FaceScan is a domain-specific Agentic AI service designed for face verification and identity metadata retrieval. Trained on curated image datasets, it can autonomously verify if an input image matches a known face and return structured metadata—including name, age, and other attributes—along with an identification confidence score. By combining AI-powered verification with database-driven metadata storage, FaceScan delivers a fast, reliable, and scalable solution for security, identity verification, and analytics applications.
+FaceScan is a self-created AI system, built entirely from scratch without using any pre-trained models. It is a domain-specific Agentic AI service designed for face verification and identity metadata retrieval. Trained on curated image datasets, it can autonomously verify if an input image matches a known face and return structured metadata—including name, age, and other attributes—along with an identification confidence score. By combining AI-powered verification with database-driven metadata storage, FaceScan delivers a fast, reliable, and scalable solution for security, identity verification, and analytics applications.
 
 ## How FaceScan Works:
 1. Model Training & Feature Encoding:

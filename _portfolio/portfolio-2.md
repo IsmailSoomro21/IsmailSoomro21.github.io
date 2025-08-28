@@ -64,10 +64,10 @@ A high-performance FastAPI-based microservice designed to detect and count juggl
 
 ## Technical Stack
 * Backend: FastAPI, Python 3.11+
-* Video Processing: OpenCV / PyTorch (or your preferred library)
-* Async Processing: Celery / asyncio
+* Video Processing: YOLOv11 
+* Async Processing: asyncio
 * Cloud Storage: AWS S3
-* Logging & Monitoring: Python logging, Prometheus/Grafana (optional)
+* Logging & Monitoring: Python logging
 
 
 ## Output Demo Link
