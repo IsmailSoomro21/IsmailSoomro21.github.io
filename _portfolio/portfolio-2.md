@@ -5,7 +5,7 @@ collection: portfolio
 ---
 
 ## Introduction
-A high-performance FastAPI-based microservice designed to detect and count juggling patterns in videos. Supports both direct video uploads and S3-based processing, with robust error handling, monitoring, and asynchronous task management. Ideal for showcasing expertise in video processing, cloud integration, and API development.
+A high-performance FastAPI-based microservice that detects and counts juggling patterns in videos. Supports both direct video uploads and S3-based processing, with robust error handling, monitoring, and asynchronous task management. Built for scalability and reliability, this service demonstrates expertise in video processing, cloud integration, and API development, making it suitable for real-world applications in sports analytics, entertainment, and automated video analysis.
 
 ## Features
 * Video Processing
