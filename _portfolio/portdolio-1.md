@@ -5,7 +5,8 @@ collection: portfolio
 ---
 
 ## Introduction 
-A production‑ready system that finds visually similar faces on the web from a single uploaded photo, then ranks results using learned embeddings and cosine similarity. Built for speed, resilience, and scale with FastAPI and a robust fallback pipeline.
+A production‑ready system that finds visually similar faces on the web from a single uploaded photo, then ranks results using learned embeddings with cosine similarity. Built for speed, resilience, and scale with FastAPI and a robust fallback pipeline. This platform also expands the ecosystem, enabling journalists and fans to effortlessly discover and track their favorite personalities.
+
 
 ## Overview
 * Goal: Given a user‑uploaded image, retrieve visually similar faces from the web and return ranked matches with metadata.
